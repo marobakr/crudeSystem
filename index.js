@@ -32,7 +32,7 @@ function IsEmptyLocalStorge() {
   }
   if (ProductList.length <= 0) {
     localStorage.removeItem('products');
-    emptyItem.display = 'block';
+    emptyItem.style.display = 'block';
     btnClearAll.classList.add('d-none');
   }
 }
@@ -41,11 +41,7 @@ IsEmptyLocalStorge();
 console.log(ProductList.length);
 
 function addProduct() {
-  if (
-    validationName() &&
-    validationCategory() &&
-    validationDescription()
-  ) {
+  if (validationName() && validationCategory() && validationDescription()) {
     // List Item
     var product = {
       name: ProductName.value,
@@ -205,7 +201,6 @@ function validationName() {
     return false;
   }
 }
-
 
 // Validation Category
 function validationCategory() {
