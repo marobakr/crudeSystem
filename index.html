@@ -41,12 +41,7 @@
               invalid pattern
             </p>
             <label for="productPrice">Product Price</label>
-            <input
-              oninput="validationPrice()"
-              class="form-control"
-              type="number"
-              id="productPrice"
-            />
+            <input class="form-control" type="number" id="productPrice" />
             <p id="validation-price" class="alert alert-danger d-none">
               invalid pattern
             </p>
@@ -94,19 +89,22 @@
               placeholder="search for char "
             />
           </div>
-          <table class="w-100 table-product">
-            <thead>
-              <tr>
-                <td>ID</td>
-                <td>product</td>
-                <td>Price</td>
-                <td>Category</td>
-                <td>Description</td>
-                <td>Action</td>
-              </tr>
-            </thead>
-            <tbody id="content"></tbody>
-          </table>
+          <div class="res">
+            <table>
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>product</td>
+                  <td>Price</td>
+                  <td>Category</td>
+                  <td>Description</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody id="content"></tbody>
+            </table>
+          </div>
+
           <button
             onclick="clearAllItem()"
             id="clear-all"
@@ -127,6 +125,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="./index.js"></script>
   </body>
-  <script src="./index.js"></script>
 </html>

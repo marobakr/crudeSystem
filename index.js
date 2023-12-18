@@ -12,8 +12,8 @@ var emptyItem = document.getElementById('not-item');
 var searchInput = document.getElementById('search');
 var btnUpdate = document.getElementById('updateBtn');
 var btnClearAll = document.getElementById('clear-all');
+var btnAdd = document.getElementById('addBtn');
 var messageValidation = document.getElementById('validation-Massege');
-var PriceMessage = document.getElementById('validation-price');
 var categoryMessage = document.getElementById('validation-Category');
 var descMessage = document.getElementById('validation-Desic');
 
@@ -43,7 +43,6 @@ console.log(ProductList.length);
 function addProduct() {
   if (
     validationName() &&
-    validationPrice() &&
     validationCategory() &&
     validationDescription()
   ) {
@@ -105,6 +104,8 @@ function DeleteItem(i) {
     localStorage.removeItem('products');
     emptyItem.style.display = 'block';
     btnClearAll.classList.add('d-none');
+    btnUpdate.classList.add('d-none');
+    btnAdd.classList.remove('d-none');
   }
 }
 
@@ -148,12 +149,11 @@ function SearchItem() {
 function setData(i) {
   btnUpdate.classList.remove('d-none');
   btnAdd.classList.add('d-none');
-  ProductList[i];
+  indexItemForUpdate = i;
   ProductName.value = ProductList[i].name;
   productPrice.value = ProductList[i].price;
   productDesic.value = ProductList[i].description;
   productCategory.value = ProductList[i].category;
-  indexItemForUpdate = i;
 }
 function updateProduct() {
   // Add New Item
@@ -164,14 +164,22 @@ function updateProduct() {
     category: productCategory.value,
   };
   // remove From Array And Add New Item
-  ProductList.splice(indexItemForUpdate, 0, product);
+  ProductList.splice(indexItemForUpdate, 1, product);
+
   // setItem From Local Storge
   localStorage.setItem('products', JSON.stringify(ProductList));
+  console.log(ProductList.length);
   // Return Display
   displayData();
+  if (ProductList.length >= 1) {
+    emptyItem.display = 'none';
+    console.log('yes');
+  } else console.log('noe');
   // Rest Btn
   btnUpdate.classList.add('d-none');
   btnAdd.classList.remove('d-none');
+  // CLear form
+  clearForm();
 }
 
 function clearAllItem() {
@@ -198,21 +206,6 @@ function validationName() {
   }
 }
 
-// Validation Price
-function validationPrice() {
-  var regxPrice = /^(500000|[1-4]?\d{0,5}|[1-9])$/;
-  if (regxPrice.test(productPrice.value)) {
-    productPrice.classList.add('is-valid');
-    productPrice.classList.remove('is-invalid');
-    PriceMessage.classList.add('d-none');
-    return true;
-  } else {
-    productPrice.classList.remove('is-valid');
-    productPrice.classList.add('is-invalid');
-    PriceMessage.classList.remove('d-none');
-    return false;
-  }
-}
 
 // Validation Category
 function validationCategory() {

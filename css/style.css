@@ -102,6 +102,9 @@ label {
   border: 1px solid var(--border-color);
 }
 /* Start Table */
+.res {
+  overflow-x: auto
+}
 thead {
   background-color: #392467;
 }
@@ -125,9 +128,7 @@ td {
   color: var(--main-color);
   border-bottom: solid 1px #392467;
 }
-.table-product > :not(caption) > * > * {
-  padding: 0.5rem 0.5rem;
-}
+
 /* End Table */
 
 .container .emptyItem {
