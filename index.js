@@ -188,7 +188,7 @@ function clearAllItem() {
 
 // Validation Name
 function validationName() {
-  var regx = /^[A-Z][a-z]{3,8}$/;
+  var regx = /^[A-Z][a-z]{3,20}$/;
   if (regx.test(ProductName.value)) {
     ProductName.classList.add('is-valid');
     ProductName.classList.remove('is-invalid');
